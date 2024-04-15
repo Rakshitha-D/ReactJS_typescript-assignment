@@ -1,1 +1,1 @@
-# ReactJS_typescript-assignment
+# ReactJS_typescript_assignment
