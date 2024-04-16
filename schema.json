@@ -21,16 +21,8 @@
           "enum": ["Male", "Female", "Prefer not to say"]
         },
         "address": {
-          "type": "object",
-          "properties": {
-            "house_number": { "type": "integer" },
-            "street": { "type": "string" },
-            "city": { "type": "string" },
-            "country": { "type": "string" },
-            "Pin_code": { "type": "integer" }
-          },
-          "required": ["country", "city"],
-          "additionalProperties": false
+          "type": "string",
+          "maxLength": 50
         },
         "current_location": {
           "type": "integer"
@@ -56,19 +48,24 @@
       ],
       "additionalProperties": false
     },
-    "education_qualification": {
+    "education_qualifications": {
       "type": "object",
       "properties": {
-        "highest-qualification": {
-          "type": "string",
-          "enum": [
-            "10th",
-            "12th",
-            "Diploma",
-            "Undergraduate",
-            "Postgraduate",
-            "None"
-          ]
+        "education_summary": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "SSC",
+              "HSC",
+              "Diploma",
+              "Undergraduate",
+              "Postgraduate",
+              "None"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "certification": {
           "type": "string",
@@ -77,24 +74,46 @@
       },
       "additionalProperties": false
     },
-    "preferences": {
+    "career_preferences": {
       "type": "object",
       "properties": {
-        "job_role": {
-          "type": "string",
-          "enum": ["Entry-level", "Associate", "Senior", "HR"]
+        "job": {
+          "type": "object",
+          "properties": {
+            "job_role": {
+              "type": "string",
+              "enum": ["Entry-level", "Associate", "Senior", "HR"]
+            },
+            "job_type": {
+              "type": "string",
+              "enum": ["Internship", "Full-time", "Part-time"]
+            }
+          },
+          "additionalItems": false
         },
-        "job_type": {
-          "type": "string",
-          "enum": ["Internship", "Full-time", "Part-time"]
+        "learning_goals": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": true
+          },
+          "uniqueItems": true
         },
-        "location": {
-          "type": "integer"
-        },
-        "on-site/Remote": {
+        "workplace": {
           "type": "string",
           "enum": ["On-site", "Remote", "Hybrid"]
+        },
+        "prefered_work_location": {
+          "type": "integer"
         }
+      },
+      "if": {
+        "properties": {
+          "workplace": { "const": "Remote" }
+        }
+      },
+      "then": {
+        "not": { "required": ["prefered_work_location"] }
       },
       "additionalProperties": false
     }
