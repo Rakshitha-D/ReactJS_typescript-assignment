@@ -2,6 +2,7 @@ import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
+
 const schema: RJSFSchema = {
   definitions: {},
   title: "User Details",
@@ -101,45 +102,74 @@ const schema: RJSFSchema = {
       type: "object",
       properties: {
         job: {
+          title:"Job",
           type: "object",
           properties: {
-            job_role: {
+            role: {
               type: "string",
               enum: ["Entry-level", "Associate", "Senior", "HR"],
             },
-            job_type: {
+            type: {
               type: "string",
               enum: ["Internship", "Full-time", "Part-time"],
             },
-            mode_of_job: {
+            mode: {
               type: "string",
               enum: ["On-site", "Remote", "Hybrid"],
             },
-            prefered_job_location: {
+            location: {
               type: "integer",
             },
           },
           additionalItems: false,
         },
+
+        course_preferences: {
+          title: "Course",
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+             
+              //name: { "type": "string" },
+              type: { "enum": ["Technical-Course", "Business-Course", "Creative-Course", "Language-Course", "Personal-Development-Course", "Hobby-Course"] },
+              mode: { "enum": ["Online", "Offline"] },
+              //language: { "enum": ["Kannada", "English", "Telugu", "Tamil", "Hindi", "Other"] }
+            }
+          }
+        },
       },
-      additionalProperties: false,
     },
+
   },
-  required: ["personal_details", "education_qualifications", "preferences"],
-  additionalProperties: false,
+  required: ["personal_details", "education_qualifications", "preferences"]
 };
 
 const uiSchema: UiSchema = {
+  
   personal_details: {
+    'ui:classNames': 'form-section',
     address: {
       "ui:widget": "textarea",
     },
+    id_proof:{
+      'ui:classNames': 'textsection',
+      
+    },
     mobile_number: {
+      'ui:classNames': 'textsection',
       country_code: {
         "ui:help": "Country code should start with '+'  (ex: +91)",
+        
       },
     },
   },
+  education_qualifications:{
+    'ui:classNames': 'form-section',
+  },
+  preferences:{
+    'ui:classNames': 'form-section',
+  }
 };
 
 export default function SignUpForm() {

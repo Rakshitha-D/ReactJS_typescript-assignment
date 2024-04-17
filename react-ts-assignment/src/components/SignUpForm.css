@@ -1,4 +1,19 @@
 .signupform {
   margin: 0 auto;
   width: 50%;
+  background-color: #ebf0f0;
+}
+.form-section {
+  background-color: #e7e0e0; 
+  padding: 20px; 
+  border-radius: 10px; 
+  margin-bottom: 20px;
+  text-align: center;
+}
+.textsection {
+  font-size: 2px;
+  text-align: left;
+  text-decoration-color: aqua;
+  text-decoration: dotted;
+  color: blue;
 }

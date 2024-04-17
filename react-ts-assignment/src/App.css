@@ -1,5 +1,10 @@
 .App {
-  /*text-align: center;*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  padding: 20px;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .App-header {
