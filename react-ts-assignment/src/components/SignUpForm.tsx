@@ -4,9 +4,10 @@ import Button from "@mui/material/Button";
 import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
+import "./SignUpForm.css";
 
 const schema: RJSFSchema = {
-  $schema: "http://json-schema.org/draft-07/schema#",
+  definitions: {},
   title: "User",
   type: "object",
   properties: {
@@ -40,38 +41,20 @@ const schema: RJSFSchema = {
           type: "string",
         },
         id: {
+          title: "Identity",
           type: "array",
           items: {
             type: "object",
             properties: {
-              aadhar_card_number: {
-                title: "Aadhar Card Number",
+              choose_identity: {
+                title: "Choose identity",
                 type: "string",
-                minLength: 12,
-                maxLength: 12,
-                pattern: "^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$",
-              },
-              pan_card: {
-                title: "Pan Card",
-                type: "string",
-                minLength: 10,
-                maxLength: 10,
-                pattern: "[A-Z]{5}[0-9]{4}[A-Z]{1}",
-              },
-              voter_id: {
-                title: "Voter Id",
-                type: "string",
-                minLength: 10,
-                maxLength: 10,
-                pattern: "^[A-Z]{3}[0-9]{7}$",
-              },
-              driving_license: {
-                title: "Driving License",
-                type: "string",
-                minLength: 16,
-                maxLength: 16,
-                pattern:
-                  "^(([A-Z]{2}[0-9]{2})( )|([A-Z]{2}-[0-9]{2}))((19|20)[0-9][0-9])[0-9]{7}$",
+                enum: [
+                  "Aadhar Card",
+                  "Pan Card",
+                  "Voter Id",
+                  "Driving License",
+                ],
               },
             },
             additionalItems: false,
@@ -119,11 +102,6 @@ const schema: RJSFSchema = {
             type: "string",
             enum: ["SSC", "HSC", "Diploma", "Undergraduate", "Postgraduate"],
           },
-          certification: {
-            title: "Certification",
-            type: "string",
-            format: "data-url",
-          },
         },
       },
       additionalProperties: false,
@@ -149,14 +127,6 @@ const schema: RJSFSchema = {
             prefered_job_location: {
               type: "integer",
             },
-            if: {
-              properties: {
-                mode_of_job: { const: "Remote" },
-              },
-            },
-            then: {
-              not: { required: ["prefered_job_location"] },
-            },
           },
           additionalItems: false,
         },
@@ -179,7 +149,12 @@ const uiSchema: UiSchema = {
 export default function SignUpForm() {
   return (
     <div>
-      <Form schema={schema} uiSchema={uiSchema} validator={validator} />
+      <Form
+        schema={schema}
+        uiSchema={uiSchema}
+        validator={validator}
+        className="signupform"
+      />
       {/*  
       <form action="">
         <TextField
