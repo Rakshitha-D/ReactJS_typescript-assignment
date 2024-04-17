@@ -40,45 +40,41 @@ const schema: RJSFSchema = {
           title: "Current Location",
           type: "string",
         },
-        id: {
-          title: "Identity",
-          type: "array",
-          items: {
-            type: "object",
-            properties: {
-              choose_identity: {
-                title: "Choose identity",
-                type: "string",
-                enum: [
-                  "Aadhar Card",
-                  "Pan Card",
-                  "Voter Id",
-                  "Driving License",
-                ],
-              },
+        id_proof: {
+          title:"Identity Proof",
+          type: "object",
+          properties: {
+            type: {
+              title:"Select id type",
+              type: "string",
+              enum: ["Aadhar", "Voter-ID", "PAN", "Driving-License"]
             },
-            additionalItems: false,
+            number: {
+              title:"Enter id number",
+              type: "string"
+            }
           },
-          minItems: 1,
-          uniqueItems: true,
+          required: ["type", "number"]
         },
         mobile_number: {
           title: "Mobile Number",
           type: "object",
           properties: {
             country_code: {
-              title: "Country Code",
+              title: "Enter Country Code",
               type: "string",
-              pattern: "",
+              pattern: "^\\+[1-9][0-9]{0,2}$",
             },
             number: {
-              title: "Number",
+              title: "Enter mobile Number",
               type: "string",
               pattern:
-                "(?:([+]\\d{1,4})[-.\\s]?)?(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
+                "(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
             },
+            
           },
-          additionalItems: false,
+          required:["country_code","number"]
+          //additionalItems: false,
         },
       },
       required: [
@@ -86,7 +82,7 @@ const schema: RJSFSchema = {
         "date_of_birth",
         "gender",
         "current_location",
-        "id",
+        "id_proof",
         "mobile_number",
       ],
       additionalProperties: false,
@@ -143,10 +139,18 @@ const uiSchema: UiSchema = {
     address: {
       "ui:widget": "textarea",
     },
+    mobile_number: {
+      country_code:{
+        "ui:help": "Country code should start with '+'  (ex: +91)"
+      }
+    }
   },
 };
 
 export default function SignUpForm() {
+  function handleSubmit(){
+    alert("submitted");
+  }
   return (
     <div>
       <Form
@@ -154,6 +158,7 @@ export default function SignUpForm() {
         uiSchema={uiSchema}
         validator={validator}
         className="signupform"
+        onSubmit={handleSubmit}
       />
       {/*  
       <form action="">
