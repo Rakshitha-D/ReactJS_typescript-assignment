@@ -119,16 +119,14 @@ const schema: RJSFSchema = {
             type: "string",
             enum: ["SSC", "HSC", "Diploma", "Undergraduate", "Postgraduate"],
           },
-          certifications: {
-            title: "Certifications",
-            type: "array",
+          certification: {
+            title: "Certification",
             items: {
               type: "string",
               format: "data-url",
             },
           },
         },
-        uniqueItems: true,
       },
       additionalProperties: false,
     },
