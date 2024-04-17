@@ -1,11 +1,7 @@
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-//import Form from "@rjsf/core";
 import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
-
 const schema: RJSFSchema = {
   definitions: {},
   title: "User",
@@ -41,20 +37,20 @@ const schema: RJSFSchema = {
           type: "string",
         },
         id_proof: {
-          title:"Identity Proof",
+          title: "Identity Proof",
           type: "object",
           properties: {
             type: {
-              title:"Select id type",
+              title: "Select id type",
               type: "string",
-              enum: ["Aadhar", "Voter-ID", "PAN", "Driving-License"]
+              enum: ["Aadhar", "Voter-ID", "PAN", "Driving-License"],
             },
             number: {
-              title:"Enter id number",
-              type: "string"
-            }
+              title: "Enter id number",
+              type: "string",
+            },
           },
-          required: ["type", "number"]
+          required: ["type", "number"],
         },
         mobile_number: {
           title: "Mobile Number",
@@ -71,9 +67,8 @@ const schema: RJSFSchema = {
               pattern:
                 "(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
             },
-            
           },
-          required:["country_code","number"]
+          required: ["country_code", "number"],
           //additionalItems: false,
         },
       },
@@ -140,15 +135,15 @@ const uiSchema: UiSchema = {
       "ui:widget": "textarea",
     },
     mobile_number: {
-      country_code:{
-        "ui:help": "Country code should start with '+'  (ex: +91)"
-      }
-    }
+      country_code: {
+        "ui:help": "Country code should start with '+'  (ex: +91)",
+      },
+    },
   },
 };
 
 export default function SignUpForm() {
-  function handleSubmit(){
+  function handleSubmit() {
     alert("submitted");
   }
   return (
