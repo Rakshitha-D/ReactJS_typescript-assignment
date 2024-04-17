@@ -16,7 +16,6 @@ const schema: RJSFSchema = {
           type: "string",
           minLength: 3,
           maxLength: 50,
-          maxLength: 40,
         },
         date_of_birth: {
           title: "Date of Birth",
