@@ -15,11 +15,8 @@ const schema: RJSFSchema = {
           title: "Name",
           type: "string",
           minLength: 3,
-<<<<<<< Updated upstream
           maxLength: 50,
-=======
           maxLength: 40,
->>>>>>> Stashed changes
         },
         date_of_birth: {
           title: "Date of Birth",
