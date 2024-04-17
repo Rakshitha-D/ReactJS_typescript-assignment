@@ -4,7 +4,7 @@ import Form from "@rjsf/mui";
 import "./SignUpForm.css";
 const schema: RJSFSchema = {
   definitions: {},
-  title: "User",
+  title: "User Details",
   type: "object",
   properties: {
     personal_details: {
@@ -15,7 +15,7 @@ const schema: RJSFSchema = {
           title: "Name",
           type: "string",
           minLength: 3,
-          maxLength: 26,
+          maxLength: 50,
         },
         date_of_birth: {
           title: "Date of Birth",
