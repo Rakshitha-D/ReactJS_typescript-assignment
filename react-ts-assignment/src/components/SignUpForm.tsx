@@ -121,10 +121,8 @@ const schema: RJSFSchema = {
           },
           certification: {
             title: "Certification",
-            items: {
-              type: "string",
-              format: "data-url",
-            },
+            type: "string",
+            format: "data-url",
           },
         },
       },
