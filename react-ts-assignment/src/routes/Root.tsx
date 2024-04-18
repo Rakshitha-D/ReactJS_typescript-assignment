@@ -16,27 +16,18 @@ export default function Root() {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="static" color="secondary">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" component="h4" sx={{ flexGrow: 1 }}>
               Home
             </Typography>
-            <Button onClick={handleButtonClick} color="inherit">
-              Sign Up
+            <Button onClick={handleButtonClick} color="success"  variant="contained">
+             Create User
             </Button>
           </Toolbar>
         </AppBar>
       </Box>
-      <UserList />
+      <UserList />   
       {/*<SignUpForm />*/}
     </div>
   );
