@@ -2,6 +2,7 @@ import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
+import React from "react";
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -87,7 +88,6 @@ const schema: RJSFSchema = {
       title: "Education Qualifications",
       type: "object",
 
-      
       properties: {
         education_summary: {
           title: "Education Summary",
@@ -95,8 +95,6 @@ const schema: RJSFSchema = {
           enum: ["SSC", "HSC", "Diploma", "Undergraduate", "Postgraduate"],
         },
       },
-
-
     },
     preferences: {
       type: "object",
@@ -130,61 +128,67 @@ const schema: RJSFSchema = {
           items: {
             type: "object",
             properties: {
-
               //name: { "type": "string" },
-              type: { "enum": ["Technical-Course", "Business-Course", "Creative-Course", "Language-Course", "Personal-Development-Course", "Hobby-Course"] },
-              mode: { "enum": ["Online", "Offline"] },
+              type: {
+                enum: [
+                  "Technical-Course",
+                  "Business-Course",
+                  "Creative-Course",
+                  "Language-Course",
+                  "Personal-Development-Course",
+                  "Hobby-Course",
+                ],
+              },
+              mode: { enum: ["Online", "Offline"] },
               //language: { "enum": ["Kannada", "English", "Telugu", "Tamil", "Hindi", "Other"] }
-            }
-          }
+            },
+          },
         },
       },
     },
-
   },
-  required: ["personal_details", "education_qualifications", "preferences"]
+  required: ["personal_details", "education_qualifications", "preferences"],
 };
 
 const uiSchema: UiSchema = {
-  'ui:rootFieldId': 'myform',
+  "ui:rootFieldId": "myform",
 
   personal_details: {
-    'ui:classNames': 'form-section',
+    "ui:classNames": "form-section",
     address: {
       "ui:widget": "textarea",
     },
     id_proof: {
-      'ui:classNames': 'textsection',
-
+      "ui:classNames": "textsection",
     },
     mobile_number: {
-      'ui:classNames': 'textsection',
+      "ui:classNames": "textsection",
       country_code: {
         "ui:help": "Country code should start with '+'  (ex: +91)",
-
       },
     },
   },
   education_qualifications: {
-    'ui:classNames': 'form-section',
+    "ui:classNames": "form-section",
   },
   preferences: {
-    course_preferences:{
-      type:{
-        'ui:classNames': 'form-sections',
+    course_preferences: {
+      type: {
+        "ui:classNames": "form-sections",
       },
-      mode:{
-        'ui:classNames': 'form-sections',
+      mode: {
+        "ui:classNames": "form-sections",
       },
-      'ui:classNames': 'form-sections',
+      "ui:classNames": "form-sections",
     },
-    'ui:classNames': 'form-section',
-  }
+    "ui:classNames": "form-section",
+  },
 };
 
 export default function SignUpForm() {
+  const [formData, setFormData] = React.useState(null);
   function handleSubmit() {
-    alert("submitted");
+    console.log(formData);
   }
   return (
     <div>
@@ -194,20 +198,9 @@ export default function SignUpForm() {
         validator={validator}
         className="signupform"
         onSubmit={handleSubmit}
+        formData={formData}
+        onChange={(e) => setFormData(e.formData)}
       />
-      {/*  
-      <form action="">
-        <TextField
-          label="Name"
-          variant="outlined"
-          placeholder="Enter your name"
-        />
-        <TextField label="Date of Birth" variant="outlined" type="date" />
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-      </form> 
-      */}
     </div>
   );
 }
