@@ -173,12 +173,6 @@ const uiSchema: UiSchema = {
   },
   preferences: {
     course_preferences: {
-      type: {
-        "ui:classNames": "form-sections",
-      },
-      mode: {
-        "ui:classNames": "form-sections",
-      },
       "ui:classNames": "form-sections",
     },
     "ui:classNames": "form-section",
