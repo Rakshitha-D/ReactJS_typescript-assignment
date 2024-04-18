@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUsers } from "./LocalStorage";
+import { deleteUser, getUsers } from "./LocalStorage";
 import {
   Avatar,
   IconButton,
@@ -18,15 +18,26 @@ export default function UserList() {
     const users = getUsers();
     setUsersList(users);
   }, []);
+
+  const handleDeleteUser = (index: number) => {
+    deleteUser(index);
+    setUsersList(usersList.filter((user, i) => i !== index));
+  };
   return (
     <div className="usersList">
       <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
         List of Registered Users
       </Typography>
-      {usersList.map((user: any) => (
+      {usersList.map((user: any, index: number) => (
         <ListItem
           secondaryAction={
-            <IconButton edge="end" aria-label="delete">
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={() => {
+                handleDeleteUser(index);
+              }}
+            >
               <DeleteIcon />
             </IconButton>
           }

@@ -9,3 +9,10 @@ export const getUsers = () => {
   console.log(registeredUsers);
   return registeredUsers;
 };
+
+export const deleteUser = (index: number) => {
+  console.log(index);
+  const registeredUsers = JSON.parse(localStorage.getItem("users") || "[]");
+  registeredUsers.splice(index, 1);
+  localStorage.setItem("users", JSON.stringify(registeredUsers));
+};
