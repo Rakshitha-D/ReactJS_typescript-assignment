@@ -116,7 +116,7 @@ const schema: RJSFSchema = {
               enum: ["On-site", "Remote", "Hybrid"],
             },
             location: {
-              type: "integer",
+              enum: ["Banglore", "Hydrabad", "Mumbai", "Pune"],
             },
           },
           additionalItems: false,
@@ -173,23 +173,19 @@ const uiSchema: UiSchema = {
   },
   preferences: {
     course_preferences: {
-      type: {
-        "ui:classNames": "form-sections",
-      },
-      mode: {
-        "ui:classNames": "form-sections",
-      },
-      "ui:classNames": "form-sections",
+      "ui:classNames": "form-section",
     },
     "ui:classNames": "form-section",
   },
 };
-
 export default function SignUpForm() {
-  const [formData, setFormData] = React.useState(null);
+  const [formData, setFormData] = React.useState("");
+  
   function handleSubmit() {
     console.log(formData);
+    localStorage.setItem("inputvalue", formData);
   }
+  
   return (
     <div>
       <Form
@@ -204,3 +200,4 @@ export default function SignUpForm() {
     </div>
   );
 }
+
