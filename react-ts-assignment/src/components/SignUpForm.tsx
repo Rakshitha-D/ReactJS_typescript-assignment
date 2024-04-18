@@ -173,17 +173,19 @@ const uiSchema: UiSchema = {
   },
   preferences: {
     course_preferences: {
-      "ui:classNames": "form-sections",
+      "ui:classNames": "form-section",
     },
     "ui:classNames": "form-section",
   },
 };
-
 export default function SignUpForm() {
-  const [formData, setFormData] = React.useState(null);
+  const [formData, setFormData] = React.useState("");
+  
   function handleSubmit() {
     console.log(formData);
+    localStorage.setItem("inputvalue", formData);
   }
+  
   return (
     <div>
       <Form
@@ -198,3 +200,4 @@ export default function SignUpForm() {
     </div>
   );
 }
+
