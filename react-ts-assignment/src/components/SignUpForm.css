@@ -1,19 +1,22 @@
 .signupform {
   margin: 0 auto;
   width: 50%;
-  background-color: #18b7b7;
+  background-color: #f3f3f3;
   padding: 20px;
   border-radius: 10px;
 }
 .form-section {
-  background-color: #3c8ba8;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 }
 .textsection {
   text-align: left;
   text-decoration-color: rgb(10, 40, 40);
   color: rgba(0, 0, 0, 0.536);
+}
+.form-sections{
+  text-align: center;
 }

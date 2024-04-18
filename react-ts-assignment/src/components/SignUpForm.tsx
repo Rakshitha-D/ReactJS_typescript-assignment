@@ -25,7 +25,9 @@ const schema: RJSFSchema = {
           title: "Date of Birth",
           type: "string",
           format: "date",
+          pattern: "^([0-9]{4})-(0[1-9]|1[0-2])-([0-2][0-9]|3[0-1])$",
         },
+
         gender: {
           title: "Gender",
           type: "string",
@@ -36,9 +38,10 @@ const schema: RJSFSchema = {
           type: "string",
           maxLength: 150,
         },
-        current_location: {
-          title: "Current Location",
+        Pin_code: {
+          title: "pin code",
           type: "string",
+          pattern: "\\d{6}",
         },
         id_proof: {
           title: "Identity Proof",
@@ -80,7 +83,7 @@ const schema: RJSFSchema = {
         "name",
         "date_of_birth",
         "gender",
-        "current_location",
+        "Pin_code",
         "id_proof",
         "mobile_number",
       ],
@@ -98,62 +101,39 @@ const schema: RJSFSchema = {
         },
       },
     },
-    preferences: {
+    Job_preferences: {
+      title: "Job Preferences",
       type: "object",
       properties: {
-        job: {
-          title: "Job",
-          type: "object",
-          properties: {
-            role: {
-              type: "string",
-              enum: ["Entry-level", "Associate", "Senior", "HR"],
-            },
-            type: {
-              type: "string",
-              enum: ["Internship", "Full-time", "Part-time"],
-            },
-            mode: {
-              type: "string",
-              enum: ["On-site", "Remote", "Hybrid"],
-            },
-            location: {
-              enum: ["Banglore", "Hydrabad", "Mumbai", "Pune"],
-            },
-          },
-          additionalItems: false,
+        role: {
+          title: "Role",
+          type: "string",
+          enum: ["Entry-level", "Associate", "Senior", "HR"],
         },
-
-        course_preferences: {
-          title: "Course",
-          type: "array",
-          items: {
-            type: "object",
-            properties: {
-              //name: { "type": "string" },
-              type: {
-                enum: [
-                  "Technical-Course",
-                  "Business-Course",
-                  "Creative-Course",
-                  "Language-Course",
-                  "Personal-Development-Course",
-                  "Hobby-Course",
-                ],
-              },
-              mode: { enum: ["Online", "Offline"] },
-              //language: { "enum": ["Kannada", "English", "Telugu", "Tamil", "Hindi", "Other"] }
-            },
-          },
+        type: {
+          title:"Type",
+          type: "string",
+          enum: ["Internship", "Full-time", "Part-time"],
+        },
+        mode: {
+          title:"Mode",
+          type: "string",
+          enum: ["On-site", "Remote", "Hybrid"],
+        },
+        location: {
+          title:"Location",
+          enum: ["Banglore", "Hydrabad", "Mumbai", "Pune"],
         },
       },
+      additionalItems: false,
     },
   },
-  required: ["personal_details", "education_qualifications", "preferences"],
+  required: ["personal_details"],
 };
 
 const uiSchema: UiSchema = {
   "ui:rootFieldId": "myform",
+  "ui:classNames": "form-sections",
 
   personal_details: {
     "ui:classNames": "form-section",
@@ -173,19 +153,16 @@ const uiSchema: UiSchema = {
   education_qualifications: {
     "ui:classNames": "form-section",
   },
-  preferences: {
-    course_preferences: {
-      "ui:classNames": "form-section",
-    },
+  Job_preferences: {
     "ui:classNames": "form-section",
   },
 };
+
 export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
   const navigate = useNavigate();
   function handleSubmit() {
     setUsers(formData);
-    alert("submitted");
     navigate("/");
   }
 
