@@ -5,7 +5,7 @@ import "./SignUpForm.css";
 
 const schema: RJSFSchema = {
   definitions: {},
-  title: "User Details",
+  title: "User Information",
   type: "object",
   properties: {
     personal_details: {
@@ -85,24 +85,24 @@ const schema: RJSFSchema = {
     },
     education_qualifications: {
       title: "Education Qualifications",
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          education_summary: {
-            title: "Education Summary",
-            type: "string",
-            enum: ["SSC", "HSC", "Diploma", "Undergraduate", "Postgraduate"],
-          },
+      type: "object",
+
+      
+      properties: {
+        education_summary: {
+          title: "Education Summary",
+          type: "string",
+          enum: ["SSC", "HSC", "Diploma", "Undergraduate", "Postgraduate"],
         },
       },
-      additionalProperties: false,
+
+
     },
     preferences: {
       type: "object",
       properties: {
         job: {
-          title:"Job",
+          title: "Job",
           type: "object",
           properties: {
             role: {
@@ -130,7 +130,7 @@ const schema: RJSFSchema = {
           items: {
             type: "object",
             properties: {
-             
+
               //name: { "type": "string" },
               type: { "enum": ["Technical-Course", "Business-Course", "Creative-Course", "Language-Course", "Personal-Development-Course", "Hobby-Course"] },
               mode: { "enum": ["Online", "Offline"] },
@@ -146,28 +146,38 @@ const schema: RJSFSchema = {
 };
 
 const uiSchema: UiSchema = {
-  
+  'ui:rootFieldId': 'myform',
+
   personal_details: {
     'ui:classNames': 'form-section',
     address: {
       "ui:widget": "textarea",
     },
-    id_proof:{
+    id_proof: {
       'ui:classNames': 'textsection',
-      
+
     },
     mobile_number: {
       'ui:classNames': 'textsection',
       country_code: {
         "ui:help": "Country code should start with '+'  (ex: +91)",
-        
+
       },
     },
   },
-  education_qualifications:{
+  education_qualifications: {
     'ui:classNames': 'form-section',
   },
-  preferences:{
+  preferences: {
+    course_preferences:{
+      type:{
+        'ui:classNames': 'form-sections',
+      },
+      mode:{
+        'ui:classNames': 'form-sections',
+      },
+      'ui:classNames': 'form-sections',
+    },
     'ui:classNames': 'form-section',
   }
 };

@@ -1,10 +1,12 @@
 .signupform {
   margin: 0 auto;
   width: 50%;
-  background-color: #ebf0f0;
+  background-color: #18b7b7;
+  padding: 20px;
+  border-radius: 10px;
 }
 .form-section {
-  background-color: #e7e0e0; 
+  background-color: #3c8ba8; 
   padding: 20px; 
   border-radius: 10px; 
   margin-bottom: 20px;
@@ -13,7 +15,13 @@
 .textsection {
   font-size: 2px;
   text-align: left;
-  text-decoration-color: aqua;
+  text-decoration-color: rgb(10, 40, 40);
   text-decoration: dotted;
-  color: blue;
+  color:rgba(0, 0, 0, 0.536);
+}
+.form-sections{
+  background-color:   #0b6180;
+  padding: 10px;
+  border-radius: 10px; 
+  margin-bottom: 20px;
 }
