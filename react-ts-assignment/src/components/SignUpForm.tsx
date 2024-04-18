@@ -25,7 +25,6 @@ const schema: RJSFSchema = {
           title: "Date of Birth",
           type: "string",
           format: "date",
-          pattern: "^([0-9]{4})-(0[1-9]|1[0-2])-([0-2][0-9]|3[0-1])$",
         },
 
         gender: {
@@ -111,17 +110,17 @@ const schema: RJSFSchema = {
           enum: ["Entry-level", "Associate", "Senior", "HR"],
         },
         type: {
-          title:"Type",
+          title: "Type",
           type: "string",
           enum: ["Internship", "Full-time", "Part-time"],
         },
         mode: {
-          title:"Mode",
+          title: "Mode",
           type: "string",
           enum: ["On-site", "Remote", "Hybrid"],
         },
         location: {
-          title:"Location",
+          title: "Location",
           enum: ["Banglore", "Hydrabad", "Mumbai", "Pune"],
         },
       },
@@ -158,6 +157,7 @@ const uiSchema: UiSchema = {
   },
 };
 
+
 export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
   const navigate = useNavigate();
@@ -176,7 +176,12 @@ export default function SignUpForm() {
         onSubmit={handleSubmit}
         formData={formData}
         onChange={(e) => setFormData(e.formData)}
-      />
+        showErrorList={"bottom"}
+      >
+        <div style={{ textAlign: 'center', }}>
+          <button type="submit" className="button" >Submit</button>
+        </div>
+      </Form>
     </div>
   );
 }
