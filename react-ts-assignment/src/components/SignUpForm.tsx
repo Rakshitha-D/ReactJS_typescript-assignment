@@ -183,7 +183,7 @@ export default function SignUpForm() {
   
   function handleSubmit() {
     console.log(formData);
-    localStorage.setItem("inputvalue", formData);
+    localStorage.setItem("inputvalue", JSON.stringify(formData));
   }
   
   return (
