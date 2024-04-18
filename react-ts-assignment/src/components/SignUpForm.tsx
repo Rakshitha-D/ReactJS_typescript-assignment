@@ -116,7 +116,7 @@ const schema: RJSFSchema = {
               enum: ["On-site", "Remote", "Hybrid"],
             },
             location: {
-              type: "integer",
+              enum: ["Banglore", "Hydrabad", "Mumbai", "Pune"],
             },
           },
           additionalItems: false,
