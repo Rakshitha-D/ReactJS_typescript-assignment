@@ -1,0 +1,493 @@
+    1  cd
+    2  sudo apt update && sudo apt upgrade
+    3  lsb_relese -a
+    4  lsb_relese-a
+    5  lsb_relese -a
+    6  sudo apt update
+    7  sudo apt install postgresql postgresql-contrib
+    8  psql --version
+    9  sudo apt install npm
+   10  sudo apt install Node.js
+   11  sudo apt update
+   12  sudo apt install Node.js
+   13  sudo apt install curl
+   14  curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+   15  curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&sudo apt-get install -y nodejs
+   16  Node.js -v
+   17  npm --version
+   18  sudo apt install Node.js
+   19  curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&sudo apt-get install -y nodejs
+   20  command -v nvm
+   21  psql --version
+   22  Node --version
+   23  node -v
+   24  npm --version
+   25  sudo apt install npm
+   26  npm --version
+   27  Node.js -V
+   28  Node.js -v
+   29  node -v && npm --version
+   30  node -version
+   31  node --version
+   32  sudo apt remove Node.js  $ sudo apt purge Node.js -y
+   33  nvm current
+   34  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+   35  nvm install 21
+   36  command -v nvm
+   37  nvm install 21
+   38  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+   39  nvm install 21
+   40  node -v
+   41  npm -v
+   42  python --version
+   43  sudo apt install python3
+   44  sudo apt install python3-pip
+   45  python3
+   46  psql --version
+   47  nvm -v
+   48  node -v
+   49  npm -v
+   50  python3 -v
+   51  python3 --v
+   52  python3
+   53  lsb_release -a
+   54  node -v
+   55  npm -v
+   56  nvm -v
+   57  psql --version
+   58  sudo -u postgres psql
+   59  ls -ld /home/srivatsa
+   60  postgres --version
+   61  sudo -u postgres psql
+   62  node -v
+   63  npm -v
+   64  nvm -v
+   65  cd ..
+   66  sudo -u postgres psql
+   67  cd
+   68  cd ..
+   69  cd
+   70  nvm ls
+   71  node --version
+   72  ls /mnt/
+   73  cd /mnt/e
+   74  ls 
+   75  ls -al
+   76  cd ..
+   77  wsl -l -o
+   78  python3 --version
+   79  node --version
+   80  python3 -m pip
+   81  cd ..
+   82  cd d
+   83  cd sank
+   84  python3 hello.py
+   85  cd ..
+   86  cd d
+   87  python --version
+   88  python3 --version
+   89  mnt/
+   90  cd mnt
+   91  cd d
+   92  cd sank
+   93  wsl python3 hello.py
+   94  sudo apt install wsl
+   95  wsl python3 hello.py
+   96  python3 -v
+   97  python3 --version
+   98  node -v
+   99  npm -v
+  100  nvm -v
+  101  psql -U obsrv_user
+  102  psql -U obsrv_user;
+  103  psql -u obsrv_user;
+  104  psql -U obsrv_user -d obsrv123
+  105  CREATE USER obsrv_user WITH PASSWORD 'obsrv123';
+  106  sudo service postgresql start
+  107  psql -u obsrv_user;
+  108  psql -U obsrv_user
+  109  psql --version
+  110  sudo passwd postgres
+  111  sudo service postgresql start
+  112  sudo -u postgres psql
+  113  cd home
+  114  sudo -u postgres psql
+  115  cd assignment1
+  116  node index.js
+  117  cd ..
+  118  pwd
+  119  ls
+  120  pwd
+  121  mkdir assignment1
+  122  cd assignment1
+  123  touch hell.py
+  124  ls
+  125  code .
+  126  python3 hell.py
+  127  code .
+  128  cd assignment1
+  129  node index.js
+  130  ls
+  131  cd assignment1
+  132  ls
+  133  /bin/python3 /home/srivatsa/assignment1/hell.py
+  134  /usr/bin/python3 /home/srivatsa/assignment1/hell.py
+  135  node --version
+  136  node index.js
+  137  cd ..
+  138  sudo service postgresql start
+  139  sudo -u postgres psql
+  140  hostname
+  141  python3 hell.py
+  142  npm install pg --save
+  143  npm install express --save
+  144  npm install body-parser --save
+  145  node api.js
+  146  sudo server postgresql start
+  147  sudo service postgresql start
+  148  node api.js
+  149  psql -U obsrv_user
+  150  sudo -u postgres psql
+  151  hostname
+  152  su - obsrv_user
+  153  sudo -u postgres createuser --interactive --pwprompt obsrv_user
+  154  sudo -u postgres psql
+  155  sudo service postgresql restart
+  156  cd ..
+  157  sudo service postgresql start
+  158  sudo -u postgres psql
+  159  sudo service postgresql status
+  160  sudo service postgresql stop
+  161  sudo service postgresql start
+  162  sudo -u postgres psql
+  163  sudo service postgresql stop
+  164  node api.js
+  165  node get.js
+  166  node api.js
+  167  node get.js
+  168  node api.js
+  169  node get.js
+  170  node get1.js
+  171  node get.js
+  172  node get2.js
+  173  node get.js
+  174  node get2.js
+  175  node get.js
+  176  node get2.js
+  177  cd
+  178  ls
+  179  mkdir basicnojs
+  180  ls
+  181  cd basicnojs
+  182  touch 1a
+  183  cd 1a
+  184  ls
+  185  cd 1a
+  186  cd basicnojs
+  187  la
+  188  cd 1a
+  189  npm init
+  190  node 1a.js
+  191  npm install express
+  192  node 1a.js
+  193  node 2a.js
+  194  node 3a.js
+  195  npm run test
+  196  node 1a.js
+  197  npm run test
+  198  node 1a.js
+  199  npm run test
+  200  node 1a.js
+  201  npm run test
+  202  npm init
+  203  node 1a.js
+  204  node 3a.js
+  205  node get2.js
+  206  sudo service postgresql start
+  207  sudo -u postgres psql
+  208  node 3a.js
+  209  node get2.js
+  210  node get1.js
+  211  node get2.js
+  212  node employees.js
+  213  node datasets.js
+  214  node 2a.js
+  215  node datasets.js
+  216  sudo service postgresql start
+  217  sudo u postgres psql
+  218  sudo -u postgres psql
+  219  sudo -u postgres psql;
+  220  sudo -u obsrv psql;
+  221  sudo -u postgres psql;
+  222  cd
+  223  cd ..
+  224  cd assignment1
+  225  cd ..
+  226  cd
+  227  cd assignment1
+  228  cp cd ..
+  229  cd ..
+  230  cp assignment1 /mnt/d/
+  231  cp -r assignment1 /mnt/d/
+  232  sudo service postgresql start
+  233  sudo -u obsrv psql;
+  234  sudo -u postgres psql
+  235  sudo service postgresql start
+  236  sudo -u postgres psql
+  237  sudo service postgresql start
+  238  sudo -u postgres psql
+  239  sudo service postgresql start
+  240  sudo -u postgres psql
+  241  node datasets.js
+  242  sudo service postgresql start
+  243  sudo -u postgres psql
+  244  sudo service postgresql stop
+  245  netstat -an | grep 5432
+  246  ps -ef | grep postgresql
+  247  sudo -u obsrv psql
+  248  psql
+  249  node datasets.js
+  250  sudo service postgresql stop
+  251  sudo service postgresql start
+  252  sudo service postgresql stop
+  253  sudo service postgresql start
+  254  sudo service postgresql stop
+  255  sudo service postgresql start
+  256  sudo service postgresql stop
+  257  sudo service postgresql start
+  258  sudo service postgresql stop
+  259  sudo service postgresql start
+  260  sudo service postgresql stop
+  261  node datasets.js
+  262  sudo service postgresql stop
+  263  node datasets.js
+  264  sudo service postgresql start
+  265  node datasets.js
+  266  sudo service postgresql stop
+  267  node datasets.js
+  268  sudo service postgresql start
+  269  node datasets.js
+  270  sudo service postgresql start
+  271  node datasets.js
+  272  sudo service postgresql start
+  273  sudo service postgresql stop
+  274  node datasets.js
+  275  node connection.js
+  276  node datasets.js
+  277  sudo service postgresql start
+  278  node datasets.js
+  279  sudo service postgresql stop
+  280  node datasets.js
+  281  sudo service postgresql start
+  282  node datasets.js
+  283  sudo service postgresql stop
+  284  node datasets.js
+  285  sudo service postgresql start
+  286  node datasets.js
+  287  sudo service postgresql start
+  288  sudo service postgresql stop
+  289  node datasets.js
+  290  sudo service postgresql stop
+  291  node datasets.js
+  292  sudo service postgresql stop
+  293  node datasets.js
+  294  sudo service postgresql start
+  295  node datasets.js
+  296  sudo service postgresql start
+  297  sudo -u obsrv_user psql
+  298  sudo -u postgres psql
+  299  sudo service postgresql stop
+  300  node datasets.js
+  301  sudo service postgresql start
+  302  node datasets.js
+  303  sudo service postgresql stop
+  304  node datasets.js
+  305  sudo service postgresql start
+  306  node datasets.js
+  307  hostname -I
+  308  ipconfig
+  309  sudo service postgresql stop
+  310  node datasets.js
+  311  node datasets.js
+  312  hostname -I
+  313  node datasets.js
+  314  hello.js
+  315  cd assignment1
+  316  cd ..
+  317  npx create-react-app simple-app --template typescript
+  318  cd simple-app
+  319  npm start
+  320  npm install --save-dev @types/react
+  321  git config user.name "Srivatsak2002"
+  322  git config user.email "srivatsa4123@gmail.com
+  323  "
+  324  git config user.email "srivatsa4123@gmail.com"
+  325  git config user.name "Srivatsak2002"
+  326  git config user.email "srivatsa4123@gmail.com"
+  327  git config user.name "Srivatsak2002"
+  328  git config user.email "srivatsa4123@gmail.com"
+  329  git config user.name "Srivatsak2002"
+  330  npm create-react-app react-app --template typescript
+  331  npm help
+  332  npm install -g typescript
+  333  npm create-react-app react-app --template typescript
+  334  npx create-react-app react-app --template typescript
+  335  git config user.name "Srivatsak2002"
+  336  git config user.email "srivatsa4123@gmail.com"
+  337  npm start
+  338  cd react-app
+  339  npm start
+  340  git config user.name "Srivatsak2002"
+  341  git config --global  user.email "srivatsa4123@gmail.com"
+  342  npm start
+  343  npm run build
+  344  npm start
+  345  npm i react
+  346  npm install @mui/material @emotion/react @emotion/styled
+  347  npm start
+  348  npm install @mui/icons-material
+  349  npm start
+  350  git -h
+  351  npm run start
+  352  npm start
+  353  npm i
+  354  cd react-app/
+  355  npm i
+  356  npm run start
+  357  python
+  358  python3
+  359  cd ..
+  360  python3 a.py
+  361  cd react-app
+  362  npm start
+  363  npm run start
+  364  npm install
+  365  npm install cross-spawn
+  366  npm run start
+  367  npm cache clean --force
+  368  npm run start
+  369  rm -rf node_modules
+  370  npm install
+  371  npm run start
+  372  npm start
+  373  cd react-app
+  374  npm start
+  375  npm install @rjsf/core
+  376  npm install @rjsf/mui
+  377  cd react-app
+  378  npm start
+  379  npm install
+  380  cd react-ts-assignment
+  381  npm install
+  382  npm i
+  383  npm start
+  384  cd react-ts-assignment
+  385  npm start
+  386  git config user.name Srivatsak2002 
+  387  npm start
+  388  cd react-ts-assignment
+  389  npm start
+  390  cd react-ts-assignment
+  391  npm start
+  392  cd react-ts-assignment
+  393  npm start
+  394  cd react-ts-assignment
+  395  npm start
+  396  npm install
+  397  npm start
+  398  cd react-ts-assignment
+  399  npm start
+  400  cd react-ts-assignment
+  401  npm start
+  402  git checkout main
+  403  git branch
+  404  git checkout signup_from
+  405  git checkout signup_form
+  406  npm start
+  407  git branch
+  408  git checkout signup_form
+  409  git merge main
+  410  npm start
+  411  pwd
+  412  git status
+  413  git branch
+  414  git fetch origin
+  415  ls -ltr
+  416  ls -al
+  417  cd .git
+  418  ls -ltr
+  419  cd ../
+  420  git rebase origin/main
+  421  git add  react-ts-assignment/src/components/SignUpForm.tsx
+  422  git status
+  423  git rebase --continue
+  424  git log
+  425  git branch
+  426  git checkout -b signup_form
+  427  git branch
+  428  git log
+  429  git checkout main
+  430  git branch
+  431  git checkout signup_form 
+  432  git push
+  433  git config -l
+  434  git push origin
+  435  git remote add origin https://github.com/Rakshitha-D/ReactJS_typescript_assignment
+  436  which $SHELL
+  437  git push origin
+  438  git config -l
+  439  git push -u origin
+  440  git log
+  441  git diff
+  442  git stash list
+  443  git fetch
+  444  git branch
+  445  git rebase origin/main
+  446  npm start
+  447  cd react-ts-assignment
+  448  npm start
+  449  git checkout main
+  450  git pull main
+  451  git pull origin
+  452  git checkout main
+  453  git pull
+  454  npm start
+  455  git branch
+  456  git checkout signup_form
+  457  git branch
+  458  git checkout main
+  459  git pull origin main
+  460  git checkout signup_form
+  461  git merge main
+  462  git push origin signup_form
+  463  npm start
+  464  git checkout main
+  465  git pull origin main
+  466  git checkout signup_form
+  467  git merge main
+  468  git push origin signup_form
+  469  git checkout main
+  470  git merge signup_form
+  471  git push origin main
+  472  git branch
+  473  git checkout signup_form
+  474  git checkout main
+  475  git pull origin main
+  476  git checkout signup_form
+  477  git merge main
+  478  git push origin signup_form
+  479  npm start 
+  480  git checkout main
+  481  git pull
+  482  git pull origin main
+  483  git config pull.rebase false
+  484  git pull origin main
+  485  cd react-ts-assignment
+  486  npm i @uidotdev/usehooks
+  487  npm start
+  488  cs react-ts-assignment
+  489  cd react-ts-assignment
+  490  npm start
+  491  git branch
+  492  git branch -r
+  493  history>>history.txt

@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import UserList from "../components/UserList";
+import { IconButton } from "@mui/material";
+
 
 export default function Root() {
   const navigate = useNavigate();
@@ -16,7 +18,16 @@ export default function Root() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="secondary">
           <Toolbar>
-            <Typography variant="h4" component="h4" sx={{ flexGrow: 1 }}>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+            
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Home
             </Typography>
             <Button onClick={handleButtonClick} color="success"  variant="contained">
