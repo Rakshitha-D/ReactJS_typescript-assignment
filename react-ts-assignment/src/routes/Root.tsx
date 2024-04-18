@@ -18,7 +18,16 @@ export default function Root() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="secondary">
           <Toolbar>
-            <Typography variant="h4" component="h4" sx={{ flexGrow: 1 }}>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Home
             </Typography>
             <Button onClick={handleButtonClick} color="success"  variant="contained">
@@ -27,7 +36,7 @@ export default function Root() {
           </Toolbar>
         </AppBar>
       </Box>
-      <UserList />   
+      <UserList />
       {/*<SignUpForm />*/}
     </div>
   );

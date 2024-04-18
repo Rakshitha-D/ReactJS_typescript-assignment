@@ -5,7 +5,6 @@ import "./SignUpForm.css";
 import React, { useEffect, useState } from "react";
 import { unstable_ClassNameGenerator } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { deleteFormData, getFormData, saveFormData } from "./useLocalStorage";
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -164,13 +163,27 @@ export default function SignUpForm() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
 
+  {
+    /* useEffect(() => {
+    const registeredUsers = JSON.parse(localStorage.getItem('formSubmissions'));
+    if (registeredUsers) {
+      setUsers(registeredUsers);
+    }
+  }, []);*/
+  }
+
+  useEffect(() => {
+    localStorage.setItem("formSubmissions", JSON.stringify(users));
+  }, [users]);
+
   function handleSubmit() {
     const arr = JSON.parse(localStorage.getItem("formSubmissions") || "[]");
-    arr.push(formData);
-    saveFormData(arr);
-    //console.log(getFormData)
 
-    deleteFormData("1");
+    arr.push(formData);
+
+    localStorage.setItem("formSubmissions", JSON.stringify(arr));
+
+    console.log(arr);
     alert("submitted");
     navigate("/");
   }
