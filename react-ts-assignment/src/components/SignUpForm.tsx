@@ -2,7 +2,7 @@ import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { unstable_ClassNameGenerator } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -183,16 +183,31 @@ const uiSchema: UiSchema = {
 export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+
+  {
+    /* useEffect(() => {
+    const registeredUsers = JSON.parse(localStorage.getItem('formSubmissions'));
+    if (registeredUsers) {
+      setUsers(registeredUsers);
+    }
+  }, []);*/
+  }
+
+  useEffect(() => {
+    localStorage.setItem("formSubmissions", JSON.stringify(users));
+  }, [users]);
 
   function handleSubmit() {
-    
-    const arr = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+    const arr = JSON.parse(localStorage.getItem("formSubmissions") || "[]");
 
     arr.push(formData);
 
     localStorage.setItem("formSubmissions", JSON.stringify(arr));
 
     console.log(arr);
+    alert("submitted");
+    navigate("/");
   }
 
   return (

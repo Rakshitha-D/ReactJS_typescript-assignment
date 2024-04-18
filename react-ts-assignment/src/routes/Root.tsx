@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
+import UserList from "../components/UserList";
 
 export default function Root() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function Root() {
           </Toolbar>
         </AppBar>
       </Box>
+      <UserList />
       {/*<SignUpForm />*/}
     </div>
   );
