@@ -3,9 +3,8 @@ import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
 import React, { useEffect, useState } from "react";
-import { unstable_ClassNameGenerator } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { deleteFormData, getFormData, saveFormData } from "./useLocalStorage";
+import { getUsers, setUsers } from "./LocalStorage";
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -162,16 +161,8 @@ const uiSchema: UiSchema = {
 export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
-
   function handleSubmit() {
-    const arr = JSON.parse(localStorage.getItem("formSubmissions") || "[]");
-    arr.push(formData);
-    saveFormData(arr);
-    //console.log(getFormData)
-
-    deleteFormData("1");
-    alert("submitted");
+    setUsers(formData);
     navigate("/");
   }
 
