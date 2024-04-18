@@ -6,9 +6,9 @@
   border-radius: 10px;
 }
 .form-section {
-  background-color: #3c8ba8; 
-  padding: 20px; 
-  border-radius: 10px; 
+  background-color: #3c8ba8;
+  padding: 20px;
+  border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -17,11 +17,5 @@
   text-align: left;
   text-decoration-color: rgb(10, 40, 40);
   text-decoration: dotted;
-  color:rgba(0, 0, 0, 0.536);
-}
-.form-sections{
-  background-color:   #0b6180;
-  padding: 10px;
-  border-radius: 10px; 
-  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.536);
 }

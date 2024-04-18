@@ -6,8 +6,13 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import SignUpForm from "../components/SignUpForm";
+import { useNavigate } from "react-router-dom";
 
 export default function Root() {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/signup");
+  };
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -23,13 +28,15 @@ export default function Root() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
+              Home
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button onClick={handleButtonClick} color="inherit">
+              Sign Up
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>
-      <SignUpForm />
+      {/*<SignUpForm />*/}
     </div>
   );
 }
