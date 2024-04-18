@@ -6,7 +6,7 @@ export const setUsers = (users: string) => {
 
 export const getUsers = () => {
   const registeredUsers = JSON.parse(
-    localStorage.getItem("formSubmissions") || "[]"
+    localStorage.getItem("users") || "[]"
   );
   return registeredUsers;
 };

@@ -5,7 +5,7 @@ export default function UserList() {
   const [usersList, setUsersList] = useState([]);
   useEffect(() => {
     const users = getUsers();
-    setUsersList(usersList);
+    setUsersList(users);
   }, []);
   return (
     <div>
