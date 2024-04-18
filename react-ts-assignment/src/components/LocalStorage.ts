@@ -5,8 +5,7 @@ export const setUsers = (users: string) => {
 };
 
 export const getUsers = () => {
-  const registeredUsers = JSON.parse(
-    localStorage.getItem("users") || "[]"
-  );
+  const registeredUsers = JSON.parse(localStorage.getItem("users") || "[]");
+  console.log(registeredUsers);
   return registeredUsers;
 };
