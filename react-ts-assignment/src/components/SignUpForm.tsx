@@ -182,8 +182,14 @@ export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
   
   function handleSubmit() {
-    console.log(formData);
-    localStorage.setItem("inputvalue", JSON.stringify(formData));
+    
+    const arr = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+
+    arr.push(formData);
+
+    localStorage.setItem("formSubmissions", JSON.stringify(arr));
+
+    console.log(arr);
   }
   
   return (
