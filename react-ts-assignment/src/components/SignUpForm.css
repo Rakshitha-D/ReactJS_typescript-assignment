@@ -13,9 +13,7 @@
   text-align: center;
 }
 .textsection {
-  font-size: 2px;
   text-align: left;
   text-decoration-color: rgb(10, 40, 40);
-  text-decoration: dotted;
   color: rgba(0, 0, 0, 0.536);
 }

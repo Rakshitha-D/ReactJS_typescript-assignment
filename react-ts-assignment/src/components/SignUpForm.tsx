@@ -3,6 +3,8 @@ import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
 import React from "react";
+import { unstable_ClassNameGenerator } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -180,12 +182,15 @@ const uiSchema: UiSchema = {
 };
 export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
-  
+  const navigate = useNavigate();
+
   function handleSubmit() {
     console.log(formData);
     localStorage.setItem("inputvalue", JSON.stringify(formData));
+    alert("submitted");
+    navigate("/");
   }
-  
+
   return (
     <div>
       <Form
@@ -200,4 +205,3 @@ export default function SignUpForm() {
     </div>
   );
 }
-
