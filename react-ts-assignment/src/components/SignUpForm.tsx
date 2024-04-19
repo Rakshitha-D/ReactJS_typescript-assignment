@@ -197,7 +197,8 @@ export default function SignUpForm() {
         onSubmit={handleSubmit}
         formData={formData}
         onChange={(e) => setFormData(e.formData)}
-        showErrorList={"bottom"}
+        showErrorList={false} 
+        liveValidate={true}
       >
         <div style={{ textAlign: "center" }}>
           <button type="submit" className="button">
@@ -207,7 +208,7 @@ export default function SignUpForm() {
         </div>
         <Snackbar
             open={open}
-            autoHideDuration={3000}
+            autoHideDuration={1000}
             onClose={handleClose}
             message="User created successfully"
           />

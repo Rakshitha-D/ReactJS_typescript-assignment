@@ -12,18 +12,47 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./UserList.css";
 import { stringAvatar } from "./AvatarFunctions";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+//import * as React from 'react';
+//import Button from '@mui/material/Button';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 export default function UserList() {
   const [usersList, setUsersList] = useState([]);
+  const [open, setOpen] = React.useState(false);
+  const [delindex, setDelIndex] = React.useState(0);
+
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const handleClickOpen = (index: number) => {
+    setDelIndex(index);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   useEffect(() => {
     const users = getUsers();
     setUsersList(users);
   }, []);
 
-  const handleDeleteUser = (index: number) => {
-    deleteUser(index);
-    setUsersList(usersList.filter((user, i) => i !== index));
+  const handleDeleteUser = () => {
+    setOpen(true);
+    deleteUser(delindex);
+    setUsersList(usersList.filter((user, i) => i !== delindex));
+    handleClose();
   };
+
   return (
     <div className="list">
       <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
@@ -38,7 +67,7 @@ export default function UserList() {
                 edge="end"
                 aria-label="delete"
                 onClick={() => {
-                  handleDeleteUser(index);
+                  handleClickOpen(index);
                 }}
               >
                 <DeleteIcon />
@@ -52,6 +81,27 @@ export default function UserList() {
           </ListItem>
         ))}
       </List>
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <DialogTitle id="responsive-dialog-title">
+          {"Are you sure you want to delete this user?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>This action cannot be undone.</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose}>
+            Cancle
+          </Button>
+          <Button onClick={handleDeleteUser} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
