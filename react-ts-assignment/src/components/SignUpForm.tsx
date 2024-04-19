@@ -1,4 +1,4 @@
-import { RJSFSchema, UiSchema, } from "@rjsf/utils";
+import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { setUsers } from "./LocalStorage";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
+import { AppBar, Box, Button, IconButton, Toolbar } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
-import Stack from '@mui/material/Stack';
-import { pink } from '@mui/material/colors';
-import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+import Stack from "@mui/material/Stack";
+import { pink } from "@mui/material/colors";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -250,12 +252,17 @@ export default function SignUpForm() {
 
   return (
     <div>
-      <button className="backbutton" onClick={handleClick}>
-      <HomeIcon className="homeicon"/>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <button className="backbutton" onClick={handleClick}>
+              <HomeIcon className="homeicon" />
+              Home
+            </button>
+          </Toolbar>
+        </AppBar>
+      </Box>
 
-        Home
-        
-      </button>
       <Form
         schema={schema}
         uiSchema={uiSchema}
