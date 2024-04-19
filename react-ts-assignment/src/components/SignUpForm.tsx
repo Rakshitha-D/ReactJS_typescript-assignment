@@ -2,9 +2,9 @@ import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getUsers, setUsers } from "./LocalStorage";
+import {  setUsers } from "./LocalStorage";
 
 const schema: RJSFSchema = {
   definitions: {},
