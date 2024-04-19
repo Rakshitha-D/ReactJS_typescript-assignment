@@ -1,11 +1,6 @@
 .App {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; 
-  padding: 20px;
-  
-  text-transform: capitalize;
-  background-color: lightskyblue;
+  background-color: rgb(248 249 250);
+  height: "100vh";
 }
 
 .App-header {
