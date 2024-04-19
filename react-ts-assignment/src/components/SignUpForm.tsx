@@ -6,9 +6,9 @@ import "./SignUpForm.css";
 import { useNavigate } from "react-router-dom";
 import { setUsers } from "./LocalStorage";
 //import PositionedSnackbar from "./snakbar";
-import * as React from 'react';
-//import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -41,10 +41,15 @@ const schema: RJSFSchema = {
           type: "string",
           maxLength: 150,
         },
-        Pin_code: {
-          title: "pin code",
+        pin_code: {
+          title: "Pin code",
           type: "string",
           pattern: "\\d{6}",
+        },
+        email: {
+          title: "Email",
+          type: "string",
+          format: "email",
         },
         id_proof: {
           title: "Identity Proof",
@@ -61,6 +66,52 @@ const schema: RJSFSchema = {
             },
           },
           required: ["type", "number"],
+          if: {
+            properties: { type: { const: "Aadhar" } },
+          },
+          then: {
+            properties: {
+              number: {
+                pattern: "^[2-9]{1}[0-9]{3}s?[0-9]{4}s?[0-9]{4}$",
+              },
+            },
+          },
+          else: {
+            if: {
+              properties: { type: { const: "Voter-ID" } },
+            },
+            then: {
+              properties: {
+                number: {
+                  pattern: "^[A-Z]{3}[0-9]{7}$",
+                },
+              },
+            },
+            else: {
+              if: {
+                properties: { type: { const: "PAN" } },
+              },
+              then: {
+                properties: {
+                  number: {
+                    pattern: "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
+                  },
+                },
+              },
+              else: {
+                if: {
+                  properties: { type: { const: "Driving-License" } },
+                },
+                then: {
+                  properties: {
+                    number: {
+                      pattern: "^[0-9]{15}$",
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
         mobile_number: {
           title: "Mobile Number",
@@ -86,7 +137,8 @@ const schema: RJSFSchema = {
         "name",
         "date_of_birth",
         "gender",
-        "Pin_code",
+        "pin_code",
+        "email",
         "id_proof",
         "mobile_number",
       ],
@@ -174,21 +226,25 @@ export default function SignUpForm() {
     setUsers(formData);
     //navigate("/");
   }
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
       return;
     }
     setOpen(false);
     navigate("/");
   };
-  function handleClick(){
-    navigate("/")
-
+  function handleClick() {
+    navigate("/");
   }
 
   return (
     <div>
-      <button className="backbutton" onClick={handleClick}>Home</button>
+      <button className="backbutton" onClick={handleClick}>
+        Home
+      </button>
       <Form
         schema={schema}
         uiSchema={uiSchema}
@@ -197,21 +253,20 @@ export default function SignUpForm() {
         onSubmit={handleSubmit}
         formData={formData}
         onChange={(e) => setFormData(e.formData)}
-        showErrorList={false} 
+        showErrorList={false}
         liveValidate={true}
       >
         <div style={{ textAlign: "center" }}>
           <button type="submit" className="button">
             Submit
           </button>
-          
         </div>
         <Snackbar
-            open={open}
-            autoHideDuration={1000}
-            onClose={handleClose}
-            message="User created successfully"
-          />
+          open={open}
+          autoHideDuration={1000}
+          onClose={handleClose}
+          message="User created successfully"
+        />
       </Form>
     </div>
   );

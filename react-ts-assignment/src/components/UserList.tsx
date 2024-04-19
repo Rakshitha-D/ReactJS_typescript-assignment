@@ -77,7 +77,22 @@ export default function UserList() {
             <ListItemAvatar>
               <Avatar {...stringAvatar(user.personal_details.name)}></Avatar>
             </ListItemAvatar>
-            <ListItemText primary={user.personal_details.name} />
+            <ListItemText
+              primary={user.personal_details.name}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="div"
+                    variant="body2"
+                    color="text.secondary"
+                  >
+                    {user.personal_details.mobile_number.country_code +
+                      user.personal_details.mobile_number.number}
+                  </Typography>
+                  {user.personal_details.email}
+                </React.Fragment>
+              }
+            />
           </ListItem>
         ))}
       </List>
