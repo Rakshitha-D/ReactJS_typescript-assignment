@@ -2,13 +2,17 @@ import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
-import React from "react";
+//import React from "react";
 import { useNavigate } from "react-router-dom";
-import {  setUsers } from "./LocalStorage";
+import { setUsers } from "./LocalStorage";
+//import PositionedSnackbar from "./snakbar";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
 
 const schema: RJSFSchema = {
   definitions: {},
-  title: "User Information",
+  title: "Create User",
   type: "object",
   properties: {
     personal_details: {
@@ -52,7 +56,7 @@ const schema: RJSFSchema = {
               enum: ["Aadhar", "Voter-ID", "PAN", "Driving-License"],
             },
             number: {
-              title: "Enter id number",
+              title: "Enter id proof number",
               type: "string",
             },
           },
@@ -139,9 +143,9 @@ const uiSchema: UiSchema = {
     address: {
       "ui:widget": "textarea",
     },
-    date_of_birth:{
+    date_of_birth: {
       yearsRange: [1980, 2006],
-      format: 'MDY'
+      format: "MDY",
     },
     id_proof: {
       "ui:classNames": "textsection",
@@ -161,17 +165,30 @@ const uiSchema: UiSchema = {
   },
 };
 
-
 export default function SignUpForm() {
   const [formData, setFormData] = React.useState("");
+  const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   function handleSubmit() {
+    setOpen(true);
     setUsers(formData);
+    //navigate("/");
+  }
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
     navigate("/");
+  };
+  function handleClick(){
+    navigate("/")
+
   }
 
   return (
     <div>
+      <button className="backbutton" onClick={handleClick}>Home</button>
       <Form
         schema={schema}
         uiSchema={uiSchema}
@@ -182,9 +199,18 @@ export default function SignUpForm() {
         onChange={(e) => setFormData(e.formData)}
         showErrorList={"bottom"}
       >
-        <div style={{ textAlign: 'center', }}>
-          <button type="submit" className="button" >Submit</button>
+        <div style={{ textAlign: "center" }}>
+          <button type="submit" className="button">
+            Submit
+          </button>
+          
         </div>
+        <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={handleClose}
+            message="User created successfully"
+          />
       </Form>
     </div>
   );
