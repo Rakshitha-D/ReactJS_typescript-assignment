@@ -1,13 +1,10 @@
-import { RJSFSchema, UiSchema } from "@rjsf/utils";
+import { RJSFSchema, UiSchema, RJSFValidationError } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
-//import React from "react";
 import { useNavigate } from "react-router-dom";
 import { setUsers } from "./LocalStorage";
-//import PositionedSnackbar from "./snakbar";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 
 const schema: RJSFSchema = {
@@ -130,7 +127,6 @@ const schema: RJSFSchema = {
             },
           },
           required: ["country_code", "number"],
-          //additionalItems: false,
         },
       },
       required: [
@@ -196,7 +192,7 @@ const uiSchema: UiSchema = {
       "ui:widget": "textarea",
     },
     date_of_birth: {
-      yearsRange: [1980, 2006],
+      yearsRange: [1970, 2006],
       format: "MDY",
     },
     id_proof: {
@@ -254,7 +250,8 @@ export default function SignUpForm() {
         formData={formData}
         onChange={(e) => setFormData(e.formData)}
         showErrorList={false}
-        liveValidate={true}
+        // liveValidate={true}
+        focusOnFirstError={true}
       >
         <div style={{ textAlign: "center" }}>
           <button type="submit" className="button">

@@ -14,9 +14,6 @@ import "./UserList.css";
 import { stringAvatar } from "./AvatarFunctions";
 import * as React from "react";
 import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
-//import * as React from 'react';
-//import Button from '@mui/material/Button';
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -24,6 +21,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import Snackbar from "@mui/material/Snackbar";
+
 
 export default function UserList() {
   const [usersList, setUsersList] = useState([]);
@@ -55,7 +54,7 @@ export default function UserList() {
 
   return (
     <div className="list">
-      <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+      <Typography sx={{ mt: 4, mb: 2 }} variant="h5" component="div">
         Users
       </Typography>
       <List className="usersList">
@@ -115,6 +114,7 @@ export default function UserList() {
           <Button onClick={handleDeleteUser} autoFocus>
             Delete
           </Button>
+          
         </DialogActions>
       </Dialog>
     </div>
