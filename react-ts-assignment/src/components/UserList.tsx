@@ -3,6 +3,7 @@ import { deleteUser, getUsers } from "./LocalStorage";
 import {
   Avatar,
   IconButton,
+  List,
   ListItem,
   ListItemAvatar,
   ListItemText,
@@ -24,30 +25,33 @@ export default function UserList() {
     setUsersList(usersList.filter((user, i) => i !== index));
   };
   return (
-    <div className="usersList">
+    <div className="list">
       <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-        List of Registered Users
+        Users
       </Typography>
-      {usersList.map((user: any, index: number) => (
-        <ListItem
-          secondaryAction={
-            <IconButton
-              edge="end"
-              aria-label="delete"
-              onClick={() => {
-                handleDeleteUser(index);
-              }}
-            >
-              <DeleteIcon />
-            </IconButton>
-          }
-        >
-          <ListItemAvatar>
-            <Avatar {...stringAvatar(user.personal_details.name)}></Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={user.personal_details.name} />
-        </ListItem>
-      ))}
+      <List className="usersList">
+        {usersList.map((user: any, index: number) => (
+          <ListItem
+            className="listName"
+            secondaryAction={
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => {
+                  handleDeleteUser(index);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            }
+          >
+            <ListItemAvatar>
+              <Avatar {...stringAvatar(user.personal_details.name)}></Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={user.personal_details.name} />
+          </ListItem>
+        ))}
+      </List>
     </div>
   );
 }

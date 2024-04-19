@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import UserList from "../components/UserList";
 import { IconButton } from "@mui/material";
 
-
 export default function Root() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
@@ -16,7 +15,7 @@ export default function Root() {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="secondary">
+        <AppBar position="static" color="primary">
           <Toolbar>
             <IconButton
               size="large"
@@ -24,14 +23,16 @@ export default function Root() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-            >
-            
-            </IconButton>
+            ></IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Home
             </Typography>
-            <Button onClick={handleButtonClick} color="success"  variant="contained">
-             Create User
+            <Button
+              onClick={handleButtonClick}
+              color="primary"
+              variant="contained"
+            >
+              Create User
             </Button>
           </Toolbar>
         </AppBar>
