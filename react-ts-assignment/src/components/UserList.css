@@ -1,4 +1,27 @@
-.usersList {
+.list {
+  margin: 20px;
+  background-color: rgb(248 249 250);
+  padding: 8px;
   width: 50%;
-  margin: 0 auto;
+}
+
+.usersList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.listName {
+  background-color: #fff;
+  border-width: 1px;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.listName:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
