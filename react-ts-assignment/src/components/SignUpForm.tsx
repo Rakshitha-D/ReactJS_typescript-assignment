@@ -19,7 +19,7 @@ const schema: RJSFSchema = {
           title: "Name",
           type: "string",
           minLength: 3,
-          maxLength: 50,
+          maxLength: 25,
         },
         date_of_birth: {
           title: "Date of Birth",
@@ -138,6 +138,10 @@ const uiSchema: UiSchema = {
     "ui:classNames": "form-section",
     address: {
       "ui:widget": "textarea",
+    },
+    date_of_birth:{
+      yearsRange: [1980, 2006],
+      format: 'MDY'
     },
     id_proof: {
       "ui:classNames": "textsection",
