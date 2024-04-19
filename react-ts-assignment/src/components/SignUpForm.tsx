@@ -1,4 +1,4 @@
-import { RJSFSchema, UiSchema, RJSFValidationError } from "@rjsf/utils";
+import { RJSFSchema, UiSchema, } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
 import Form from "@rjsf/mui";
 import "./SignUpForm.css";
@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { setUsers } from "./LocalStorage";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
+
+import Stack from '@mui/material/Stack';
+import { pink } from '@mui/material/colors';
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -236,10 +240,21 @@ export default function SignUpForm() {
     navigate("/");
   }
 
+  function HomeIcon(props: SvgIconProps) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+
   return (
     <div>
       <button className="backbutton" onClick={handleClick}>
+      <HomeIcon className="homeicon"/>
+
         Home
+        
       </button>
       <Form
         schema={schema}

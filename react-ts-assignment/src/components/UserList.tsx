@@ -21,7 +21,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import Snackbar from "@mui/material/Snackbar";
+
 
 
 export default function UserList() {
@@ -63,6 +63,7 @@ export default function UserList() {
             className="listName"
             secondaryAction={
               <IconButton
+              color="error"
                 edge="end"
                 aria-label="delete"
                 onClick={() => {
