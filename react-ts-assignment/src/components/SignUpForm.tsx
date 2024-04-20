@@ -125,13 +125,22 @@ const schema: RJSFSchema = {
             number: {
               title: "Enter mobile Number",
               type: "string",
-              pattern: "(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
+              pattern:
+                "(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
             },
           },
           required: ["country_code", "number"],
         },
       },
-      required: ["name", "date_of_birth", "gender", "pin_code", "email", "id_proof", "mobile_number"],
+      required: [
+        "name",
+        "date_of_birth",
+        "gender",
+        "pin_code",
+        "email",
+        "id_proof",
+        "mobile_number",
+      ],
       additionalProperties: false,
     },
     education_qualifications: {
@@ -174,7 +183,7 @@ const schema: RJSFSchema = {
     created_date: {
       title: "Created Date",
       type: "string",
-      format: "date-time", 
+      format: "date-time",
       readOnly: true,
     },
   },
@@ -211,7 +220,7 @@ const uiSchema: UiSchema = {
     "ui:classNames": "form-section",
   },
   created_date: {
-    "ui:widget": "hidden", 
+    "ui:widget": "hidden",
   },
 };
 
@@ -222,19 +231,23 @@ export default function SignUpForm() {
   const [errorMessage, setErrorMessage] = React.useState<string>("");
   const [error, setError] = React.useState(false);
 
-
-  function handleSubmit(data: IChangeEvent<any, RJSFSchema, any>, event: FormEvent<any>) {
+  function handleSubmit(
+    data: IChangeEvent<any, RJSFSchema, any>,
+    event: FormEvent<any>
+  ) {
     const today = new Date();
     const birthDate = new Date(formData.personal_details.date_of_birth);
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
       age--;
     }
     if (age < 18) {
-      setError(true); 
+      setError(true);
       setErrorMessage("You must be at least 18 years old to create user.");
-      
     } else {
       formData.created_date = new Date();
       setOpen(true);
@@ -243,11 +256,14 @@ export default function SignUpForm() {
     }
   }
 
-  const handleerrorclose=()=>{
-    setError(false)
-  }
+  const handleerrorclose = () => {
+    setError(false);
+  };
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
     if (reason === "clickaway") {
       return;
     }
@@ -266,6 +282,33 @@ export default function SignUpForm() {
         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
       </SvgIcon>
     );
+  }
+
+  function transformErrors(errors: any[], uiSchema: any) {
+    return errors.map((error) => {
+      if (error.property.endsWith(".name") && error.name === "minLength") {
+        error.message = "Name must be at least 3 characters long.";
+      }
+      if (error.property.endsWith(".name") && error.name === "maxLength") {
+        error.message = "Name can not be greater than 25 characters.";
+      }
+      if (error.property.endsWith(".address") && error.name === "maxLength") {
+        error.message = "Address must be less than 150 characters";
+      }
+      if (error.property.endsWith(".pin_code") && error.name === "pattern") {
+        error.message = "Pin Code should be 6 digits";
+      }
+      if (
+        error.property.endsWith(".country_code") &&
+        error.name === "pattern"
+      ) {
+        error.message = "Please enter valid country code";
+      }
+      if (error.property.endsWith(".number") && error.name === "pattern") {
+        error.message = "Please enter valid Mobile Number";
+      }
+      return error;
+    });
   }
 
   return (
@@ -291,6 +334,7 @@ export default function SignUpForm() {
         onChange={(e) => setFormData(e.formData)}
         showErrorList={false}
         focusOnFirstError={true}
+        transformErrors={transformErrors}
       >
         <div style={{ textAlign: "center" }}>
           <button type="submit" className="button">
