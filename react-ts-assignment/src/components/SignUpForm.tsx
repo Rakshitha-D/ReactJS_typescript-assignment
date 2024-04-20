@@ -62,18 +62,18 @@ const schema: RJSFSchema = {
               type: "string",
               enum: ["Aadhar", "Voter-ID", "PAN", "Driving-License"],
             },
-            number: {
+            id_number: {
               title: "Enter id proof number",
               type: "string",
             },
           },
-          required: ["type", "number"],
+          required: ["type", "id_number"],
           if: {
             properties: { type: { const: "Aadhar" } },
           },
           then: {
             properties: {
-              number: {
+              id_number: {
                 pattern: "^[2-9]{1}[0-9]{3}\\s?[0-9]{4}\\s?[0-9]{4}$",
               },
             },
@@ -84,7 +84,7 @@ const schema: RJSFSchema = {
             },
             then: {
               properties: {
-                number: {
+                id_number: {
                   pattern: "^[A-Z]{3}[0-9]{7}$",
                 },
               },
@@ -95,7 +95,7 @@ const schema: RJSFSchema = {
               },
               then: {
                 properties: {
-                  number: {
+                  id_number: {
                     pattern: "^[A-Z]{5}[0-9]{4}[A-Z]{1}$",
                   },
                 },
@@ -106,7 +106,7 @@ const schema: RJSFSchema = {
                 },
                 then: {
                   properties: {
-                    number: {
+                    id_number: {
                       pattern: "^[0-9]{15}$",
                     },
                   },
@@ -310,6 +310,9 @@ export default function SignUpForm() {
       }
       if (error.property.endsWith(".number") && error.name === "pattern") {
         error.message = "Please enter valid Mobile Number";
+      }
+      if (error.property.endsWith(".id_number") && error.name === "pattern") {
+        error.message = "Please enter valid Id";
       }
       return error;
     });
