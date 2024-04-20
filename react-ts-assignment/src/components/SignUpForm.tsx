@@ -9,8 +9,6 @@ import Snackbar from "@mui/material/Snackbar";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { FormEvent } from "react";
 import { IChangeEvent } from "@rjsf/core";
-
-
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const schema: RJSFSchema = {
@@ -33,7 +31,6 @@ const schema: RJSFSchema = {
           type: "string",
           format: "date",
         },
-
         gender: {
           title: "Gender",
           type: "string",
@@ -128,28 +125,18 @@ const schema: RJSFSchema = {
             number: {
               title: "Enter mobile Number",
               type: "string",
-              pattern:
-                "(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
+              pattern: "(?:[(](\\d{1,3})[)][-.\\s]?)?(\\d{1,4})[-.\\s]?(\\d{1,4})[-.\\s]?(\\d{1,9})",
             },
           },
           required: ["country_code", "number"],
         },
       },
-      required: [
-        "name",
-        "date_of_birth",
-        "gender",
-        "pin_code",
-        "email",
-        "id_proof",
-        "mobile_number",
-      ],
+      required: ["name", "date_of_birth", "gender", "pin_code", "email", "id_proof", "mobile_number"],
       additionalProperties: false,
     },
     education_qualifications: {
       title: "Education Qualifications",
       type: "object",
-
       properties: {
         education_summary: {
           title: "Education Summary",
@@ -232,23 +219,43 @@ export default function SignUpForm() {
   const [formData, setFormData] = React.useState<any>({});
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
-  console.log("funct")
+  const [errorMessage, setErrorMessage] = React.useState<string>("");
+  const [error, setError] = React.useState(false);
+
+
   function handleSubmit(data: IChangeEvent<any, RJSFSchema, any>, event: FormEvent<any>) {
-    formData.created_date = new Date()
-    setOpen(true);
-    setUsers(formData);
-    //navigate("/");
+    const today = new Date();
+    const birthDate = new Date(formData.personal_details.date_of_birth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    if (age < 18) {
+      setError(true); 
+      setErrorMessage("You must be at least 18 years old to create user.");
+      
+    } else {
+      formData.created_date = new Date();
+      setOpen(true);
+      setUsers(formData);
+      //navigate("/");
+    }
   }
-  const handleClose = (
-    event: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
+
+  const handleerrorclose=()=>{
+    setError(false)
+  }
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }
     setOpen(false);
+    setErrorMessage("");
     navigate("/");
   };
+
   function handleClick() {
     navigate("/");
   }
@@ -283,7 +290,6 @@ export default function SignUpForm() {
         formData={formData}
         onChange={(e) => setFormData(e.formData)}
         showErrorList={false}
-        // liveValidate={true}
         focusOnFirstError={true}
       >
         <div style={{ textAlign: "center" }}>
@@ -296,6 +302,12 @@ export default function SignUpForm() {
           autoHideDuration={1000}
           onClose={handleClose}
           message="User created successfully"
+        />
+        <Snackbar
+          open={error}
+          autoHideDuration={5000}
+          onClose={handleerrorclose}
+          message={errorMessage}
         />
       </Form>
     </div>
