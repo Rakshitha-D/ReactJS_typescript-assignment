@@ -42,6 +42,7 @@ export default function UserList() {
   };
   useEffect(() => {
     const users = getUsers();
+    users.sort((a:any, b:any) => new Date(b.created_date).getTime() - new Date(a.created_date).getTime());
     setUsersList(users);
   }, []);
 
