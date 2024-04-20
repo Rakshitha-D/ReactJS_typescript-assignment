@@ -10,6 +10,8 @@ import { AppBar, Box, Toolbar } from "@mui/material";
 import { FormEvent } from "react";
 import { IChangeEvent } from "@rjsf/core";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const schema: RJSFSchema = {
   definitions: {},
@@ -236,6 +238,8 @@ export default function SignUpForm() {
       setErrorMessage("You must be at least 18 years old to create user.");
       
     } else {
+      const uniqueId = uuidv4(); 
+      formData.id = uniqueId; 
       formData.created_date = new Date();
       setOpen(true);
       setUsers(formData);
