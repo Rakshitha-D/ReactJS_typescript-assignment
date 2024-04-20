@@ -86,10 +86,11 @@ export default function UserList() {
                     variant="body2"
                     color="text.secondary"
                   >
-                    {user.personal_details.mobile_number.country_code +
-                      user.personal_details.mobile_number.number}
+                    {user.personal_details.mobile_number.country_code} {" "} 
+                      {user.personal_details.mobile_number.number}
                   </Typography>
-                  {user.personal_details.email}
+                  created on:
+                  {user.created_date}
                 </React.Fragment>
               }
             />

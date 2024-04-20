@@ -7,6 +7,9 @@ import { setUsers } from "./LocalStorage";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import { AppBar, Box, Toolbar } from "@mui/material";
+import { FormEvent } from "react";
+import { IChangeEvent } from "@rjsf/core";
+
 
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
@@ -181,6 +184,12 @@ const schema: RJSFSchema = {
       },
       additionalItems: false,
     },
+    created_date: {
+      title: "Created Date",
+      type: "string",
+      format: "date-time", 
+      readOnly: true,
+    },
   },
   required: ["personal_details"],
 };
@@ -214,13 +223,18 @@ const uiSchema: UiSchema = {
   Job_preferences: {
     "ui:classNames": "form-section",
   },
+  created_date: {
+    "ui:widget": "hidden", 
+  },
 };
 
 export default function SignUpForm() {
-  const [formData, setFormData] = React.useState("");
+  const [formData, setFormData] = React.useState<any>({});
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
-  function handleSubmit() {
+  console.log("funct")
+  function handleSubmit(data: IChangeEvent<any, RJSFSchema, any>, event: FormEvent<any>) {
+    formData.created_date = new Date()
     setOpen(true);
     setUsers(formData);
     //navigate("/");
