@@ -6,11 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { setUsers } from "./LocalStorage";
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
-import { AppBar, Box, Button, IconButton, Toolbar } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { AppBar, Box, Toolbar } from "@mui/material";
 
-import Stack from "@mui/material/Stack";
-import { pink } from "@mui/material/colors";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const schema: RJSFSchema = {
