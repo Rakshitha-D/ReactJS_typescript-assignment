@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import UserList from "../components/UserList";
 import { IconButton } from "@mui/material";
-
+import AddIcon from '@mui/icons-material/Add';
 export default function Root() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
@@ -32,7 +32,8 @@ export default function Root() {
               color="primary"
               variant="contained"
             >
-              Create User
+              Create User <AddIcon style={{ color: 'white' }}/>
+             
             </Button>
           </Toolbar>
         </AppBar>

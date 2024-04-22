@@ -176,7 +176,7 @@ const schema: RJSFSchema = {
         },
         location: {
           title: "Location",
-          enum: ["Banglore", "Hydrabad", "Mumbai", "Pune"],
+          enum: ["Banglore", "Hyderabad", "Mumbai", "Pune"],
         },
       },
       additionalItems: false,
@@ -199,10 +199,6 @@ const uiSchema: UiSchema = {
     "ui:classNames": "form-section",
     address: {
       "ui:widget": "textarea",
-    },
-    date_of_birth: {
-      yearsRange: [1970, 2006],
-      format: "MDY",
     },
     id_proof: {
       "ui:classNames": "textsection",
