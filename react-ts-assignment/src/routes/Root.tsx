@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import UserList from "../components/UserList";
 import { IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import HomeIcon from '@mui/icons-material/Home';
+
 export default function Root() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
@@ -25,6 +27,7 @@ export default function Root() {
               sx={{ mr: 2 }}
             ></IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+             <HomeIcon className="homeicon"/>
               Home
             </Typography>
             <Button

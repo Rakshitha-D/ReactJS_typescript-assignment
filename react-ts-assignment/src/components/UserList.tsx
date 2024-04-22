@@ -23,6 +23,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import BoyIcon from '@mui/icons-material/Boy';
 import GirlIcon from '@mui/icons-material/Girl';
+import Divider from '@mui/material/Divider';
+
 
 export default function UserList() {
   const [usersList, setUsersList] = useState([]);
@@ -79,7 +81,6 @@ export default function UserList() {
               <Avatar {...stringAvatar(user.personal_details.name)}></Avatar>
             </ListItemAvatar>
             <ListItemText
-             //primary={user.gender === "Male" ? <BoyIcon /> : <GirlIcon />}
               primary={user.personal_details.name} 
               secondary={
                 <React.Fragment>
@@ -93,7 +94,7 @@ export default function UserList() {
                       
                   </Typography>
                   created on:
-                  {user.created_date} {user.personal_details.gender== "Male" ? <BoyIcon /> : <GirlIcon />}
+                  {user.created_date} 
                 </React.Fragment>
               }
             />
