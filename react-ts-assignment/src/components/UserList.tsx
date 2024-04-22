@@ -21,8 +21,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-
-
+import BoyIcon from '@mui/icons-material/Boy';
+import GirlIcon from '@mui/icons-material/Girl';
 
 export default function UserList() {
   const [usersList, setUsersList] = useState([]);
@@ -79,7 +79,8 @@ export default function UserList() {
               <Avatar {...stringAvatar(user.personal_details.name)}></Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={user.personal_details.name}
+             //primary={user.gender === "Male" ? <BoyIcon /> : <GirlIcon />}
+              primary={user.personal_details.name} 
               secondary={
                 <React.Fragment>
                   <Typography
@@ -89,9 +90,10 @@ export default function UserList() {
                   >
                     {user.personal_details.mobile_number.country_code} {" "} 
                       {user.personal_details.mobile_number.number}
+                      
                   </Typography>
                   created on:
-                  {user.created_date}
+                  {user.created_date} {user.personal_details.gender== "Male" ? <BoyIcon /> : <GirlIcon />}
                 </React.Fragment>
               }
             />
